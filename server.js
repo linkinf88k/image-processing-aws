@@ -39,7 +39,7 @@ app.get("/filteredimage", async (req, res) => {
   const imageUrl = req.query.image_url;
   try {
     const filteredPath = await filterImageFromURL(imageUrl);
-    res.sendFile(filteredPath);
+    res.status(200).sendFile(filteredPath);
     res.on("finish", function () {
       deleteLocalFiles([filteredPath]);
     });
